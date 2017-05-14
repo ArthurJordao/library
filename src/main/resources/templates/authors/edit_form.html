@@ -13,7 +13,8 @@
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name" placeholder="Name" th:field="*{name}"
                    required="required" th:classappend="${#fields.hasErrors('name')}? 'form-control-danger'" />
-            <div th:if="${#fields.hasErrors('name')}" class="form-control-feedback">The name must be not empty</div>
+            <div th:each="err : ${#fields.errors('name')}"
+                 th:text="${err}" class="form-control-feedback" />
         </div>
         <button type="submit" class="btn btn-primary">Edit author</button>
         <a th:href="@{/authors}" class="btn btn-secondary">Cancel</a>
