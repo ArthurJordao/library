@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/default_skeleton :: head">
+</head>
+<body>
+<nav class="navbar navbar-toggleable-xl navbar-light bg-faded" th:include="fragments/default_skeleton :: navbar">
+
+</nav>
+<main class="container">
+    <h1>New author</h1>
+    <form th:object="${author}" method="post">
+        <div class="form-group" th:classappend="${#fields.hasErrors('name')}? 'has-danger'">
+            <label class="form-control-label" for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Name" th:field="*{name}"
+                   required="required" th:classappend="${#fields.hasErrors('name')}? 'form-control-danger'" />
+            <div th:if="${#fields.hasErrors('name')}" class="form-control-feedback">The name must be not empty</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Add author</button>
+        <a th:href="@{/authors}" class="btn btn-secondary">Cancel</a>
+    </form>
+</main>
+<div th:include="fragments/default_skeleton :: scripts" />
+</body>
+</html>

@@ -7,8 +7,12 @@
 
 </nav>
 <main class="container">
-    <h1>Library system</h1>
-    <p>This system is a simple CRUD to books and authors with authentication.</p>
+    <h1 th:text="'Delete author: ' + ${author.name}" />
+    <p th:text="'Are you sure you want delete the author with id ' + ${author.id}" />
+    <form method="post">
+        <button type="submit" class="btn btn-danger">Remove author</button>
+        <a th:href="@{/authors}" class="btn btn-secondary">Cancel</a>
+    </form>
 </main>
 <div th:include="fragments/default_skeleton :: scripts" />
 </body>

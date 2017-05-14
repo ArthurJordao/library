@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/default_skeleton :: head">
+</head>
+<body>
+<nav class="navbar navbar-toggleable-xl navbar-light bg-faded" th:include="fragments/default_skeleton :: navbar">
+
+</nav>
+<main class="container">
+    <h1>Authors list</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>details</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="author : ${authors}">
+            <td scope="row" th:text="${author.id}" />
+            <td th:text="${author.name}" />
+            <td><a th:href="@{/authors/details/{id}(id=${author.id})}">Details</a></td>
+            <td><a th:href="@{/authors/edit/{id}(id=${author.id})}">Edit</a></td>
+            <td><a th:href="@{/authors/delete/{id}(id=${author.id})}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/authors/new}">New Author</a>
+</main>
+<div th:include="fragments/default_skeleton :: scripts" />
+</body>
+</html>

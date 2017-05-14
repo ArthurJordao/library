@@ -7,8 +7,11 @@
 
 </nav>
 <main class="container">
-    <h1>Library system</h1>
-    <p>This system is a simple CRUD to books and authors with authentication.</p>
+    <h1 th:text="'Author: ' + ${author.name}" />
+    <h2>Books</h2>
+    <ul>
+        <li th:each="book : ${author.books}" th:text="${books.name}"></li>
+    </ul>
 </main>
 <div th:include="fragments/default_skeleton :: scripts" />
 </body>
