@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/default_skeleton :: head">
+</head>
+<body>
+<header th:include="fragments/default_skeleton :: header" />
+<main class="container">
+    <h1>Books list</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>details</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}">
+            <td scope="row" th:text="${book.id}" />
+            <td th:text="${book.name}" />
+            <td><a th:href="@{/books/details/{id}(id=${book.id})}">Details</a></td>
+            <td><a th:href="@{/books/edit/{id}(id=${book.id})}">Edit</a></td>
+            <td><a th:href="@{/books/delete/{id}(id=${book.id})}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/books/new}">New Book</a>
+</main>
+<div th:include="fragments/default_skeleton :: scripts" />
+</body>
+</html>
