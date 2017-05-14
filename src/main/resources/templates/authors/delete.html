@@ -3,9 +3,7 @@
 <head th:include="fragments/default_skeleton :: head">
 </head>
 <body>
-<nav class="navbar navbar-toggleable-xl navbar-light bg-faded" th:include="fragments/default_skeleton :: navbar">
-
-</nav>
+<header th:include="fragments/default_skeleton :: header" />
 <main class="container">
     <h1 th:text="'Delete author: ' + ${author.name}" />
     <p th:text="'Are you sure you want delete the author with id ' + ${author.id}" />
