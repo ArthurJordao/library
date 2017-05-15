@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/default_skeleton :: head">
+</head>
+<body>
+<header th:include="fragments/default_skeleton :: header" />
+<main class="container">
+    <h1>Edit book</h1>
+    <form th:object="${book}" method="post">
+        <div class="form-group" th:classappend="${#fields.hasErrors('name')}? 'has-danger'">
+            <label class="form-control-label" for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Name" th:field="*{name}"
+                   required="required" th:classappend="${#fields.hasErrors('name')}? 'form-control-danger'" />
+            <div th:each="err : ${#fields.errors('name')}"
+                 th:text="${err}" class="form-control-feedback" />
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('author')}? 'has-danger'">
+            <label for="author" class="form-control-label">Author:</label>
+            <select class="custom-select" th:field="*{author.id}" id="author"
+                    th:classappend="${#fields.hasErrors('author')}? 'form-control-danger'">
+                <option th:each="author : ${authors}" id="author" th:value="${author.id}"
+                        th:text="${author.name}"></option>
+            </select>
+            <div th:each="err : ${#fields.errors('author')}"
+                 th:text="${err}" class="form-control-feedback" />
+        </div>
+        <button type="submit" class="btn btn-primary">Edit book</button>
+        <a th:href="@{/books}" class="btn btn-secondary">Cancel</a>
+    </form>
+</main>
+<div th:include="fragments/default_skeleton :: scripts" />
+</body>
+</html>
