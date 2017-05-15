@@ -28,6 +28,7 @@
             </ul>
         </div>
     </nav>
+    <div class="alert alert-success" role="alert" th:each="message : ${messages}" th:text="${message}" />
 </header>
 <div th:fragment="scripts">
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
