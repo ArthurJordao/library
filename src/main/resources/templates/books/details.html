@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/default_skeleton :: head">
+</head>
+<body>
+<header th:include="fragments/default_skeleton :: header" />
+<main class="container">
+    <h1 th:text="'Book: ' + ${book.name}" />
+</main>
+<div th:include="fragments/default_skeleton :: scripts" />
+</body>
+</html>

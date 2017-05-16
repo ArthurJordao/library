@@ -70,4 +70,23 @@ class BookController(val bookRepository: BookRepository, val authorRepository: A
         redirectAttributes.addFlashAttribute("messages", listOf("The book was edited"))
         return "redirect:/books"
     }
+
+    @GetMapping("/delete/{id}")
+    fun confirmDelete(@PathVariable("id") bookId: Long, model: Model): String {
+        model.addAttribute("book", bookRepository.findOne(bookId))
+        return "books/delete"
+    }
+
+    @PostMapping("/delete/{id}")
+    fun deleteBook(@PathVariable("id") bookId: Long, redirectAttributes: RedirectAttributes): String {
+        bookRepository.delete(bookId)
+        redirectAttributes.addFlashAttribute("messages", listOf("The book was deleted"))
+        return "redirect:/books"
+    }
+
+    @GetMapping("/details/{id}")
+    fun details(@PathVariable("id") bookId: Long, model: Model): String {
+        model.addAttribute("book", bookRepository.findOne(bookId))
+        return "books/details"
+    }
 }

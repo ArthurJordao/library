@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/default_skeleton :: head">
+</head>
+<body>
+<header th:include="fragments/default_skeleton :: header" />
+<main class="container">
+    <h1 th:text="'Delete book: ' + ${book.name}" />
+    <p th:text="'Are you sure you want delete the book with id ' + ${book.id}" />
+    <form method="post">
+        <button type="submit" class="btn btn-danger">Book author</button>
+        <a th:href="@{/books}" class="btn btn-secondary">Cancel</a>
+    </form>
+</main>
+<div th:include="fragments/default_skeleton :: scripts" />
+</body>
+</html>
